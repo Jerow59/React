@@ -54,6 +54,13 @@ class TemperatureInput extends React.Component {
 
 }
 
+function Column2 ({left, right}) {
+    return <div className="row">
+        <div className="col-md-6">{left}</div>
+        <div className="col-md-6">{right}</div>
+    </div>
+}
+
 class Calculator extends React.Component {
 
     constructor(props) {
@@ -89,8 +96,10 @@ class Calculator extends React.Component {
                 <label htmlFor="celsius">Température en Celsius</label>
                 <input type="text" id="celsius" value={temperature} className="form-control" onChange={this.handleChange} />
             </div>*/}
-            <TemperatureInput scale="c" temperature={celsius} onTemperatureChange={this.handleCelsiusChange}/>
-            <TemperatureInput scale="f" temperature={fahrenheit} onTemperatureChange={this.handleFahrenheitChange}/>
+            <Column2
+                left={<TemperatureInput scale="c" temperature={celsius} onTemperatureChange={this.handleCelsiusChange}/>}
+                right={<TemperatureInput scale="f" temperature={fahrenheit} onTemperatureChange={this.handleFahrenheitChange}/>}
+                />
             <BoilingVerdict celsius={celsius}/>
         </div>
     }
